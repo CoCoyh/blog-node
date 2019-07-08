@@ -28,9 +28,6 @@ const articleSchema = new mongoose.Schema({
 	// 字数
 	numbers: { type: String, default: 0 },
 
-	// 封面图
-	img_url: { type: String, default: 'https://upload-images.jianshu.io/upload_images/12890819-80fa7517ab3f2783.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240' },
-
 	// 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
 	type: { type: Number, default: 1 },
 

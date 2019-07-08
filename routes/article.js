@@ -13,44 +13,25 @@ exports.addArticle = (req, res) => {
     keyword,
     content,
     desc,
-    img_url,
     tags,
     category,
     state,
     type,
     origin,
   } = req.body;
-  let tempArticle = null;
-  if (img_url) {
-    tempArticle = new Article({
-      title,
-      author,
-      keyword: keyword ? keyword.split(',') : [],
-      content,
-      numbers: content.length,
-      desc,
-      img_url,
-      tags: tags ? tags.split(',') : [],
-      category: category ? category.split(',') : [],
-      state,
-      type,
-      origin,
-    });
-  } else {
-    tempArticle = new Article({
-      title,
-      author,
-      keyword: keyword ? keyword.split(',') : [],
-      content,
-      numbers: content.length,
-      desc,
-      tags: tags ? tags.split(',') : [],
-      category: category ? category.split(',') : [],
-      state,
-      type,
-      origin,
-    });
-  }
+  let tempArticle = new Article({
+    title,
+    author,
+    keyword: keyword ? keyword.split(',') : [],
+    content,
+    numbers: content.length,
+    desc,
+    tags: tags ? tags.split(',') : [],
+    category: category ? category.split(',') : [],
+    state,
+    type,
+    origin,
+  });
 
   tempArticle
     .save()
@@ -79,7 +60,6 @@ exports.updateArticle = (req, res) => {
     keyword,
     content,
     desc,
-    img_url,
     tags,
     category,
     state,
@@ -95,7 +75,6 @@ exports.updateArticle = (req, res) => {
       keyword: keyword ? keyword.split(',') : [],
       content,
       desc,
-      img_url,
       tags: tags ? tags.split(',') : [],
       category: category ? category.split(',') : [],
       state,
@@ -185,7 +164,6 @@ exports.getArticleList = (req, res) => {
       let fields = {
         title: 1,
         desc: 1,
-        img_url: 1,
         tags: 1,
         category: 1,
         meta: 1,
@@ -327,7 +305,6 @@ exports.getArticleListAdmin = (req, res) => {
         keyword: 1,
         // content: 1,
         desc: 1,
-        img_url: 1,
         tags: 1,
         category: 1,
         state: 1,
