@@ -26,7 +26,6 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
- 
   config.logger = {
     outputJSON: true,
     level: 'DEBUG',
