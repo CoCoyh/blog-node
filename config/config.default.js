@@ -32,24 +32,24 @@ module.exports = appInfo => {
     consoleLevel: 'DEBUG',
   };
 
-  config.sequelize = {
-    host: '',
-    port: 3306,
-    user: 'root',
-    password: '',
-    database: '',
-    dialect: 'mysql',
-    operatorsAliases: false,
-    timezone: '+08:00',
-    pool: {
-      max: 10,
-      min: 0,
-      acquire: 30000,
-      idle: 1000,
-      connectionLimit: 10,
-      dateStrings: true,
-    },
-  };
+  // config.sequelize = {
+  //   host: '',
+  //   port: 3306,
+  //   user: 'root',
+  //   password: '',
+  //   database: '',
+  //   dialect: 'mysql',
+  //   operatorsAliases: false,
+  //   timezone: '+08:00',
+  //   pool: {
+  //     max: 10,
+  //     min: 0,
+  //     acquire: 30000,
+  //     idle: 1000,
+  //     connectionLimit: 10,
+  //     dateStrings: true,
+  //   },
+  // };
 
   return {
     ...config,
