@@ -7,7 +7,7 @@ class AppBootHook {
 
   async willReady() {
     // 初始化数据库
-    await this.app.model.sync({ force: false });
+    // await this.app.model.sync({ force: false });
     // 执行定时任务
     // await this.app.runSchedule('pk');
   }
