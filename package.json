@@ -7,10 +7,12 @@
     "declarations": true
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "egg": "^2.15.1",
+    "egg-mongoose": "^3.2.0",
     "egg-scripts": "^2.11.0",
-    "egg-sequelize": "^5.2.0",
-    "mysql2": "^1.6.5"
+    "mongoose-auto-increment": "^5.0.1",
+    "yargs": "^14.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

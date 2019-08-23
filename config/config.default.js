@@ -32,24 +32,18 @@ module.exports = appInfo => {
     consoleLevel: 'DEBUG',
   };
 
-  // config.sequelize = {
-  //   host: '',
-  //   port: 3306,
-  //   user: 'root',
-  //   password: '',
-  //   database: '',
-  //   dialect: 'mysql',
-  //   operatorsAliases: false,
-  //   timezone: '+08:00',
-  //   pool: {
-  //     max: 10,
-  //     min: 0,
-  //     acquire: 30000,
-  //     idle: 1000,
-  //     connectionLimit: 10,
-  //     dateStrings: true,
-  //   },
-  // };
+  config.mongoose = {
+    client: {
+      url: "mongodb://127.0.0.1:27017/blog",
+      options: {
+      //   auth: { authSource: "admin" },
+      //   user: "",
+      //   pass: "",
+      },
+      // plugins: [],
+
+    }
+  }
 
   return {
     ...config,
