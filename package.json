@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "main": "app.js",
   "egg": {
     "declarations": true
   },
@@ -36,14 +37,16 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "commits": "./scripts/commits.sh"
   },
   "ci": {
     "version": "10"
   },
+  "homepage": "https://github.com/CoCoyh/blog-node",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:CoCoyh/blog-node.git"
   },
   "author": "guoyanhong",
   "license": "MIT"
