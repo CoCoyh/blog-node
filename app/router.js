@@ -22,7 +22,4 @@ module.exports = app => {
 
   // 评论
   router.get('/commentList', controller.comment.getCommentList);
-
-  // 项目
-  
 };

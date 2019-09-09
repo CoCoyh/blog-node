@@ -3,10 +3,9 @@
 const { Controller } = require("egg");
 
 class UserController extends Controller {
-  /**
-   * 用户登陆（管理后台和博客）
-   */
   async login() {
+
+    ctx.body = { message: 'test' }
   }
   
   /**
@@ -20,6 +19,11 @@ class UserController extends Controller {
    * 用户注册
    */
   async register() {
+    const { ctx, service } = this;
+    ctx.validate({ 
+      userName: 'userName',
+
+    });
 
   }
 

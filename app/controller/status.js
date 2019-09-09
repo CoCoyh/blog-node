@@ -1,10 +1,8 @@
-'use strict';
-
-const Controller = require('egg').Controller;
+const { Controller } = require('egg');
 
 class StatusController extends Controller {
   async test() {
-    
+    return 'hi, egg';
   }
 }
 

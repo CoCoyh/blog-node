@@ -45,6 +45,10 @@ module.exports = appInfo => {
     }
   }
 
+  config.validate = {
+    convert: true,
+  }
+
   return {
     ...config,
     ...userConfig,
