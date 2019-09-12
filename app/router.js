@@ -12,7 +12,6 @@ module.exports = app => {
   require('./router/admin')(app);
 
   // 用户
-  router.post('/login', controller.user.login);
   router.post('/logout', controller.user.logout);
 
   // 文章

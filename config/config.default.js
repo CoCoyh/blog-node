@@ -19,7 +19,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1565663966226_6746';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'responseFormat' ];
 
   // add your user config here
   const userConfig = {
@@ -30,6 +30,10 @@ module.exports = appInfo => {
     outputJSON: true,
     level: 'DEBUG',
     consoleLevel: 'DEBUG',
+  };
+
+  config.security = {
+    csrf: false,
   };
 
   config.mongoose = {
@@ -43,6 +47,14 @@ module.exports = appInfo => {
       // plugins: [],
 
     }
+  }
+
+  config.session = {
+    key: 'SID',
+    maxAge: 5 * 60 * 1000,
+    renew: true,
+    httpOnly: true,
+    encrypt: true,
   }
 
   config.validate = {

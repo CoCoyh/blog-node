@@ -26,7 +26,7 @@ module.exports = app => {
     // 封面
     img_url: { type: String, default: '' },
 
-    eamil: { 
+    email: { 
       type: String, 
       required: true,
       validate: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
