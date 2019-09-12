@@ -3,7 +3,7 @@
 module.exports = app => {
   const { controller, router } = app;
 
-  router.post('/loginAdmin', controller.user.loginAdmin);
+  router.post('/login/loginAdmin', controller.user.loginAdmin);
   router.get('/currentUser', controller.user.currentUser);
   router.get('/userList', controller.user.getUserList);
   router.delete('/user', controller.user.deleteUser);

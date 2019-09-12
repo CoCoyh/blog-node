@@ -63,7 +63,6 @@ class UserController extends Controller {
    */
   async register() {
     const { ctx, service } = this;
-    console.log('ggggg ..', ctx.request.body);
     ctx.validate({ 
       name: 'name',
       password: {
@@ -107,22 +106,38 @@ class UserController extends Controller {
     * 获取登陆用户（博客系统）
     * 第三方授权登陆的用户信息
     */
-   async getUser() {
-     
+   async oauth() {
+     const { ctx, service } = this;
+     ctx.validate({
+       code: {
+         type: 'string',
+         required: true,
+       }
+     });
+     const res = await service.user.oauth(ctx.request.body);
+     ctx.body = res;
    }
 
    /**
     * 获取用户列表（管理后台）
     */
    async getUserList() {
-
+     const { ctx, service } = this;
+     const res = await service.user.getUserList(ctx.query);
+     ctx.body = res;
    }
 
    /**
     * 删除用户（管理后台）
     */
   async deleteUser() {
-
+    const { ctx, service } = this;
+    ctx.validate({
+      id: 'number',
+      required: true,
+    })
+    const res = await service.user.deleteUser(ctx.request.body);
+    res.body = res;
   }
   
 }

@@ -21,8 +21,8 @@ module.exports = app => {
     start_time: { type: Date, default: Date.now },
 
     end_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true,
   });
 
   // 自增 ID 插件配置

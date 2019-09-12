@@ -12,10 +12,8 @@ module.exports = app => {
     desc: { type: String, default: '' }, 
 
     icon: { type: String, default: '' },
-
-    create_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true,
   });
 
   // 自增 ID 插件配置

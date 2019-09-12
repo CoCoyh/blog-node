@@ -19,7 +19,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1565663966226_6746';
 
   // add your middleware config here
-  config.middleware = [ 'responseFormat' ];
+  config.middleware = [ 'auth', 'responseFormat' ];
 
   // add your user config here
   const userConfig = {
@@ -45,7 +45,6 @@ module.exports = appInfo => {
       //   pass: "",
       },
       // plugins: [],
-
     }
   }
 
@@ -59,6 +58,25 @@ module.exports = appInfo => {
 
   config.validate = {
     convert: true,
+  }
+
+  /**
+   * 获取GitHub用户信息URL
+   * eg: https://api.github.com/user?access_token=****&scope=&token_type=bearer
+   */
+  config.github = {
+    username: 'CoCoyh',
+    url: 'https://github.com',
+    oauth: '/login/oauth/authorize',
+    access_token: '/login/oauth/access_token',
+    user: '/user',
+    redirect_url: "http://localhost:3001/login",
+    client_id: "502176cec65773057a9e",
+    client_secret: "65d444de381a026301a2c7cffb6952b9a86ac235",
+  }
+
+  config.auth = {
+    ignore: '/login'
   }
 
   return {

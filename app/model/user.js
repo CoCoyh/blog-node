@@ -46,10 +46,8 @@ module.exports = app => {
       .update(argv.auth_default_password || 'root')  // update()产生计算后的hash
       .digest('hex'),  // 计算所有需要被哈希化的数据摘要（通过Hash.update()方法）
     },
-
-    create_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true
   });
 
   // 自增 ID 插件配置

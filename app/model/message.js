@@ -39,10 +39,8 @@ module.exports = app => {
 
     // 状态 0 是未处理，1 是已处理
 	  state: { type: Number, default: 0 },
-
-    create_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true,
   });
 
   // 自增 ID 插件配置
