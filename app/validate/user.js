@@ -16,7 +16,7 @@ module.exports = app => {
   });
   validator.addRule('phone', (rule, value) => {
     if (value && !/^1[3456789]\d{9}$/.test(value)) {
-      return '手机号吗有无，请重填';
+      return '手机号码格式错误，请重填';
     }
   })
 }

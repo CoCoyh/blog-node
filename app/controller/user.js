@@ -123,6 +123,22 @@ class UserController extends Controller {
     */
    async getUserList() {
      const { ctx, service } = this;
+     ctx.validate({
+      name: {
+        type: 'string',
+        required: false,
+      },
+      pageSize: {
+        type: 'number',
+        required: false,
+        default: 10
+      },
+      pageIndex: {
+        type: 'number',
+        required: false,
+        default: 1
+      }
+     }, ctx.query);
      const res = await service.user.getUserList(ctx.query);
      ctx.body = res;
    }

@@ -45,6 +45,17 @@ class TagController extends Controller {
    */
   async getTagList() {
     const { ctx, service } = this;
+    ctx.validate({
+      name: {
+        type: 'string',
+      },
+      pageSize: {
+        type: 'number',
+      },
+      pageIndex: {
+        type: 'number'
+      }
+    }, ctx.query)
     const res = await service.tag.getTagList(ctx.query);
     ctx.body = res;
   }

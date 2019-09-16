@@ -129,7 +129,7 @@ class UserService extends Service {
    async getUserList(params) {
      const { ctx } = this
      try {
-       const { type, name } = params;
+       const { type, name, pageIndex, pageSize } = params;
        let condition = {};
        if (type) {
          condition.type = type;
@@ -137,8 +137,6 @@ class UserService extends Service {
        if (name) {
          condition.name = name;
        }
-       const pageIndex = parseInt(params.pageIndex) || 1;
-       const pageSize = parseInt(params.pageSize) || 10;
        const skip = (pageIndex - 1) * pageSize;
        const fields = { _id: 0, __v: 0, open_id: 0 };
        const options = { skip, limit: pageSize, sort: { createdAt: -1 }};

@@ -10,10 +10,8 @@ module.exports = app => {
     name: { type: String, required: true },
 
     desc: { type: String, defaut: '' }, 
-
-    create_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true,
   });
 
   // 自增 ID 插件配置
