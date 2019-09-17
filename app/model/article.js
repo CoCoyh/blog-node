@@ -11,6 +11,8 @@ module.exports = app => {
 
     author: { type: String, required: true },
 
+    author_id: { type: String, required: true },
+
     desc: { type: String, default: '' },
 
     content: { type: String, required: true },
@@ -18,14 +20,11 @@ module.exports = app => {
     // 文章字数
     numbers: { type: String, default: 0 }, 
 
-    // 文章封面
-    img_url: { type: String, default: '' }, 
-
     // 文章类型 0: 普通文章（为以后扩展）
     type: { type: Number, defaut: 1, enum: [0] }, 
 
     // 文章状态 0: 草稿， 1: 已发布
-    state: { type: Number, default: 0, enum: [0, 2] },
+    state: { type: Number, default: 0, enum: [0, 1] },
 
     // 文章来源 0: 原创， 1: 转载 2: 混合
     origin: { type: Number, default: 0, enum: [0, 1, 2] },

@@ -16,6 +16,7 @@ module.exports = () => async (ctx, next) => {
       };
       return;
     }
+    ctx.state.userId = sessionId;
   }
   await next();
 };
