@@ -25,7 +25,7 @@ class MessageService extends Service {
         data.avatar = userInfo.avatar;
         data.introduce = userInfo.introduce;
       }
-      await new ctx.model.Message.save(data);
+      await new ctx.model.Message(data).save();
       return true;
     } catch(e) {
       ctx.logger.error(`[${pre}.addMessage]: ${e}`);

@@ -11,14 +11,15 @@ class TagController extends Controller {
     ctx.validate({
       name: {
         type: 'string',
-        required: true,
       },
       desc: {
         type: 'string',
         max: 200,
+        required: false,
       },
       icon: {
         type: 'string',
+        required: false,
       }
     })
     const res = await service.tag.addTag(ctx.request.body);

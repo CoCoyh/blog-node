@@ -53,7 +53,7 @@ class UserService extends Service {
       if (userInfo) {
         throw new Error('该用户已存在');
       }
-      await new ctx.model.User(params).save();
+      await ctx.model.User(params).save();
       return true;
     } catch(e) {
       ctx.logger.error(`[${pre}.register]: catch with error: ${e}`);

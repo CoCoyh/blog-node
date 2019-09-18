@@ -10,14 +10,14 @@ class CategoryController extends Controller {
     ctx.validate({
       name: {
         type: 'string',
-        required: true,
       },
       desc: {
         type: 'string',
         max: 200,
+        required: false,
       },
     })
-    const res = await service.Category.addCategory(ctx.request.body);
+    const res = await service.category.addCategory(ctx.request.body);
     ctx.body = res;
   }
 
@@ -32,7 +32,7 @@ class CategoryController extends Controller {
         required: true,
       }
     });
-    const res = await service.Category.deleteCategory(ctx.request.body);
+    const res = await service.category.deleteCategory(ctx.request.body);
     ctx.body = res;
   }
 
@@ -52,7 +52,7 @@ class CategoryController extends Controller {
         type: 'numbere'
       }
     })
-    const res = await service.Category.getCategoryList(ctx.query);
+    const res = await service.category.getCategoryList(ctx.query);
     ctx.body = res;
   }
 }

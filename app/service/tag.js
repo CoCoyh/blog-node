@@ -7,14 +7,16 @@ class TagService extends Service {
   /**
    * 添加标签
    */
-  async addTag() {
+  async addTag(params) {
     const { ctx } = this;
     try {
-      const res = await ctx.model.Tag.findOne({ name: params.name });
+      const { name, desc, icon } = params;
+      const res = await ctx.model.Tag.findOne({ name });
       if (res) {
         throw new Error('该标签已存在');
       }
-      await new ctx.model.Tag.save({ name: params.name, desc: params.desc, icon: params.icon })
+      const data = { name, desc, icon };
+      await ctx.model.Tag(data).save();
       return true;
     } catch(e) {
       ctx.logger.error(`[${pre}.addTag]: ${e}`);

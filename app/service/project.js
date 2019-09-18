@@ -11,15 +11,15 @@ class ProjectService extends Service {
     const { ctx } = this;
     try {
       const { title, url, img, content, start_time, end_time, state } = params;
-      const options = {
+      const data = {
         title, url, img, content, start_time, end_time, state,
       }
       // 标题校验
-      const res = await ctx.model.Project.findOne({ title: params.title });
+      const res = await ctx.model.Project.findOne({ title });
       if (res) {
         throw new Error('该标题已存在');
       }
-      await new ctx.model.Project.save(options);
+      await new ctx.model.Project(data).save();
       return true;
     } catch(e) {
       ctx.logger.error(`[${pre}.addProject]: ${e}`);

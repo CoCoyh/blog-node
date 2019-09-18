@@ -3,9 +3,9 @@
 module.exports = app => {
   const { controller, router } = app;
   
-  router.post('/login/login', controller.user.login);
-  router.post('/register', controller.user.register);
-  router.get('/login/oauth', controller.user.oauth);
+  router.post('/api/login', controller.user.login);
+  router.post('/api/register', controller.user.register);
+  router.get('/api/oauth', controller.user.oauth);
 
   router.post('/comment', controller.comment.addComment);
 

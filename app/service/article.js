@@ -11,22 +11,18 @@ class ArticleService extends Service {
   async addArticle(params) {
     const { ctx } = this;
     try {
-      const { title, content, desc, tags, category, state, type,  origin } = params;
-      const res = await ctx.model.Article.findOne({ title: params.title });
+      const { title, content, desc, tags, category, state, type, origin } = params;
+      const res = await ctx.model.Article.findOne({ title });
       if (res) {
         throw new Error('文章标题已存在');
       }
-      const userInfo = await ctx.model.User.findOne({ id: ctx.state.userId });
-      if (!userInfo) {
-        throw new Error('查找作者信息错误');
-      }
-      const author = userInfo.name;
-      const author_id = ctx.state.userId;
-      tags = tags.split(',');
-      category = category.split(',');
+
+      const author = ctx.state.userId;
+      const tag = tags.split(',');  
+      const cate = category.split(',');
       const numbers = content.length;
-      const data = { title, author, author_id, content, desc, tags, category, state, type, origin, numbers };
-      await ctx.model.Article.save(data);
+      const data = { title, author, content, desc, tags: tag, category: cate, state, type, origin, numbers };
+      await ctx.model.Article(data).save();
       return true;
     } catch(e) {
       ctx.logger.error(`[${pre}.addArticle]: ${e}`);

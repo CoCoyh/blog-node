@@ -15,9 +15,6 @@ class ArticleController extends Controller {
         min: 2,
         max: 50
       },
-      author: {
-        type: 'string',
-      },
       content: {
         type: 'string',
         min: 1,
@@ -27,10 +24,6 @@ class ArticleController extends Controller {
         type: 'string',
         min: 0,
         max: 400,
-        required: false,
-      },
-      img_url: {
-        type: 'string',
         required: false,
       },
       tags: {

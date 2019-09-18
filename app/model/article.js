@@ -9,16 +9,11 @@ module.exports = app => {
   const ArticleSchema = new Schema({
     title: { type: String, required: true },
 
-    author: { type: String, required: true },
-
-    author_id: { type: String, required: true },
+    author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 
     desc: { type: String, default: '' },
 
     content: { type: String, required: true },
-
-    // 文章字数
-    numbers: { type: String, default: 0 }, 
 
     // 文章类型 0: 普通文章（为以后扩展）
     type: { type: Number, defaut: 1, enum: [0] }, 
@@ -30,30 +25,24 @@ module.exports = app => {
     origin: { type: Number, default: 0, enum: [0, 1, 2] },
 
     // 文章标签
-    tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag', required: true }],
+    tags: [{ type: Schema.Types.ObjectId, ref: 'Tag', required: true }],
 
     // 文章分类
-    category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }],
+    category: [{ type: Schema.Types.ObjectId, ref: 'Category', required: true }],
 
     // 文章评论
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment', required: true }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment'}],
 
     // 点赞的用户
-    like_users: [
-      {
-        id: { type: mongoose.Schema.Types.ObjectId },
-      },
-    ],
+    like_users: [{ type: Schema.Types.ObjectId, ref: 'User'}],
 
     // 阅读人数
     views: { type: Number, default: 0 },
 
     // 点赞数
     likes: { type: Number, default: 0 },
-
-    create_time: { type: Date, defaut: Date.now },
-
-    update_time: { type: Date, default: Date.now },
+  }, {
+    timestamps: true
   });
 
   // 自增 ID 插件配置
@@ -63,6 +52,13 @@ module.exports = app => {
     startAt: 1,
     incrementBy: 1,
   });
+
+  // 虚拟属性 'numbers'：表示文章内容的长度
+  ArticleSchema
+    .virtual('numbers')
+    .get(function() {
+      return this.content.length;
+    });
   return mongoose.model('Article', ArticleSchema);
 }
 
