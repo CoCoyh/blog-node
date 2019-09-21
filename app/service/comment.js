@@ -34,18 +34,17 @@ class CommentService extends Service {
   async updateComment(params) {
     const { ctx } = this;
     try {
-      const { article_id, content, to_user, id } = params;
+      const { content, to_user, id } = params;
       const userId = ctx.state.userId;
       const nowDate = new Date();
-      let data = {
+      let third = {
+        user: userId,d,
         content,
         create_time: nowDate,
-        user: userId,
+        to_user,
       };
-      data.to_user = to_user;
-      data.third_comment.push(obj);
-      
-
+      await ctx.model.Comment.updateOne({ _id: id }, {$push: {third_comment: data}} );
+      return true;
     } catch (e) {
       ctx.logger.error(`[${pre}.updateComment]: ${e}`);
       throw new Error(e);
@@ -58,7 +57,22 @@ class CommentService extends Service {
   async getCommentList(params) {
     const { ctx } = this;
     try {
-
+      const { pageIndex, pageSize } = params;
+      const options = { skip, limit: pageSize, sort: { createdAt: -1 }};
+      const skip = (pageIndex - 1) * pageSize;
+      const fields = { _id: 0, __v: 0 };
+      const res = await Promise.all([
+        ctx.model.Project.find({}, fields, options),
+        ctx.model.Project.countDocuments(condition),
+      ])
+      return {
+        list: res[0],
+        pagination: {
+          total: res[1],
+          pageSize,
+          pageIndex,
+        },
+      }
     } catch (e) {
       ctx.logger.error(`[${pre}.getCommentList]: ${e}`);
       throw new Error(e);
