@@ -10,7 +10,8 @@ class MessageService extends Service {
   async addMessage(params) {
     const { ctx } = this;
     try {
-      const { user_id, content, email, name, phone } = params;
+      const { content, email, name, phone } = params;
+      const userId = ctx.state.userId;
       let data = {
         content,
         email,
@@ -18,13 +19,6 @@ class MessageService extends Service {
         phone
       }
       
-      if (user_id) {
-        const userIno = await ctx.model.User.findById({ _id: user_id });
-        data.phone = userIno.phone;
-        data.user_id = userInfo._id;
-        data.avatar = userInfo.avatar;
-        data.introduce = userInfo.introduce;
-      }
       await new ctx.model.Message(data).save();
       return true;
     } catch(e) {

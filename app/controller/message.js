@@ -8,15 +8,6 @@ class MessageController extends Controller {
   async addMessage() {
     const { ctx, service } = this;
     ctx.validate({
-      user_id: {
-        type: 'string',
-        required: false,
-      },
-      name: {
-        type: 'string',
-        min: 3,
-        max: 100,
-      },
       email: {
         type: 'email',
       },

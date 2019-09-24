@@ -49,12 +49,15 @@ class TagController extends Controller {
     ctx.validate({
       name: {
         type: 'string',
+        required: false,
       },
       pageSize: {
         type: 'number',
+        required: false,
       },
       pageIndex: {
-        type: 'number'
+        type: 'number',
+        required: false,
       }
     }, ctx.query)
     const res = await service.tag.getTagList(ctx.query);

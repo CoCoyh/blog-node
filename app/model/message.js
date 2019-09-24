@@ -7,28 +7,10 @@ module.exports = app => {
 
   autoIncrement.initialize(mongoose);
   const MessageSchema = new Schema({
-    user_id: { type: String, required: true },
-
-    name: { type: String, default: '' }, 
-
-    avatar: { type: String, default: 'user' },
-
-    phone: {
-      type: String,
-      default: '',
-      validate:  /^1[3456789]\d{9}$/,
-    },
-
-    introduce: { type: String, default: '' },
+    
+    user:  { type: Schema.Types.ObjectId, ref: 'User', required: true },
 
     content: { type: String, required: true },
-
-    email: { 
-      type: String,
-      required: true,
-      required: true,
-      validate: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/,
-    },
     
     // 回复留言内容
     reply_list: [

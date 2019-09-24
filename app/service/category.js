@@ -53,7 +53,7 @@ class CategoryService extends Service {
       const options = { skip, limit: pageSize, sort: { createdAt: -1 }};
       const res = await Promise.all([
         ctx.model.User.find(conditions, fields, options),
-        ctx.model.User.countDocuments(condition),
+        ctx.model.User.countDocuments(conditions),
       ])
       return {
         list: res[0],

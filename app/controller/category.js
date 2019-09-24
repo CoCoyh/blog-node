@@ -44,12 +44,15 @@ class CategoryController extends Controller {
     ctx.validate({
       name: {
         type: 'string',
+        required: false,
       },
       pageSize: {
         type: 'number',
+        required: false,
       },
       pageIndex: {
-        type: 'numbere'
+        type: 'numbere',
+        required: false,
       }
     })
     const res = await service.category.getCategoryList(ctx.query);
